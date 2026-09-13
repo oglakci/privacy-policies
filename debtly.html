@@ -12,41 +12,90 @@
   a { color: #10B981; }
   footer { margin-top: 48px; font-size: 13px; color: #aaa; border-top: 1px solid #eee; padding-top: 16px; }
   .back { display: inline-block; margin-bottom: 24px; color: #10B981; text-decoration: none; font-size: 14px; }
+  table { border-collapse: collapse; width: 100%; margin-top: 12px; font-size: 14px; }
+  th, td { border: 1px solid #eee; padding: 8px; text-align: left; vertical-align: top; color: #444; }
+  th { background: #fafafa; font-weight: 600; }
 </style>
 </head>
 <body>
 <a class="back" href="index.html">← Tüm uygulamalar</a>
 <h1>Debtly</h1>
 <p>Borç takip uygulaması — Gizlilik Politikası</p>
-<p>Son güncelleme: Eylül 2026</p>
+<p>Son güncelleme: 14 Eylül 2026</p>
 
-<h2>Toplanan Veriler</h2>
-<p>Debtly yalnızca aşağıdaki verileri toplar:</p>
+<h2>Özet</h2>
+<p>Debtly'yi kullanmak için hesap açmanız gerekmez. Borç ve ödeme kayıtlarınız cihazınızda kalır; bunları biz göremeyiz ve bir sunucuya kopyalamayız. Bununla birlikte uygulama, çökme kayıtları ve güncelleme kontrolü için iki dış hizmete bağlanır. Aşağıda bunların ne gönderdiği tek tek açıklanmıştır.</p>
+
+<h2>Cihazınızda Saklanan Veriler</h2>
+<p>Aşağıdaki veriler yalnızca cihazınızın yerel depolama alanında tutulur:</p>
 <ul>
-  <li>Borç bilgileri (alacaklı adı, tutar, faiz oranı, vade tarihi)</li>
-  <li>Ödeme geçmişi</li>
-  <li>Uygulama tercihleri (dil, tema, ödeme stratejisi)</li>
+  <li>Borç bilgileri (alacaklı adı, tutar, faiz oranı, vade tarihi, kategori, notlar)</li>
+  <li>Ödeme geçmişi ve düzenli ödeme planları</li>
+  <li>Hedefler, başarımlar ve ödeme serisi kayıtları</li>
+  <li>Uygulama tercihleri (ad, para birimi, dil, tema, ödeme stratejisi, aylık ödeme kapasitesi)</li>
+</ul>
+<p>Bu veriler cihazınızdaki bir SQLite veritabanında saklanır. <strong>Veritabanı şifrelenmez</strong>; verileriniz cihazınızın kendi işletim sistemi korumalarına ve — açtıysanız — uygulamanın PIN/biyometrik kilidine dayanır.</p>
+
+<h2>Cihazınızdan Çıkan Veriler</h2>
+<p>Uygulama yalnızca aşağıdaki iki durumda dışarıya bağlantı kurar:</p>
+
+<table>
+  <tr><th>Hizmet</th><th>Ne zaman</th><th>Ne gönderilir</th></tr>
+  <tr>
+    <td><strong>Sentry</strong><br>(çökme raporlama)</td>
+    <td>Uygulamada bir hata oluştuğunda</td>
+    <td>Hata mesajı ve teknik yığın izi, uygulama sürümü, cihaz modeli, işletim sistemi sürümü ve IP adresi. Sunucular Avrupa Birliği (Almanya) içindedir.</td>
+  </tr>
+  <tr>
+    <td><strong>Expo (EAS Update)</strong><br>(güncelleme kontrolü)</td>
+    <td>Uygulama her açıldığında ve öne geldiğinde</td>
+    <td>Uygulama ve çalışma zamanı sürüm bilgisi ile IP adresi. Yeni bir güncelleme varsa indirilir.</td>
+  </tr>
+</table>
+
+<p><strong>Önemli ve dürüst bir uyarı:</strong> Bir hata tam da bir borç veya ödeme kaydedilirken oluşursa, hata mesajı o işlemdeki alan değerlerini — örneğin bir alacaklı adını veya tutarı — içerebilir ve bu bilgi çökme raporuyla birlikte Sentry'ye ulaşabilir. Bu bilgiler bilerek toplanmaz, pazarlama veya analiz için kullanılmaz ve yalnızca hatayı gidermek amacıyla incelenir. Yine de teorik olarak mümkün olduğu için burada açıkça belirtiyoruz.</p>
+
+<p>Çökme raporlamasını uygulama içinden kapatma seçeneği şu an bulunmamaktadır. Bunu istemiyorsanız lütfen aşağıdaki e-posta adresinden bize yazın.</p>
+
+<h2>Kullanmadığımız Şeyler</h2>
+<ul>
+  <li>Reklam gösterilmez, reklam kimliği kullanılmaz.</li>
+  <li>Kullanım analitiği veya davranış takibi yapılmaz.</li>
+  <li>Bildirimler tamamen cihazınızda oluşturulur ve zamanlanır; bir bildirim sunucusuna kayıt yapılmaz, cihaz bildirim jetonu (push token) alınmaz.</li>
+  <li>Hesap, giriş veya bulut yedekleme yoktur.</li>
+  <li>Bu sürümde satın alma veya abonelik bulunmamaktadır; ödeme altyapısı devre dışıdır ve herhangi bir ödeme hizmetine veri gönderilmez.</li>
 </ul>
 
-<h2>Verilerin Saklanması</h2>
-<p>Tüm veriler yalnızca cihazınızda saklanır. Hiçbir veri sunucuya veya buluta gönderilmez. Hesap açmanıza gerek yoktur.</p>
-
-<h2>Üçüncü Taraf Hizmetler</h2>
-<p>Debtly herhangi bir üçüncü taraf analitik veya reklam hizmeti kullanmaz. Pro abonelik için RevenueCat kullanılmaktadır; RevenueCat'in gizlilik politikasına <a href="https://www.revenuecat.com/privacy" target="_blank">buradan</a> ulaşabilirsiniz.</p>
-
-<h2>KVKK Haklarınız</h2>
-<p>6698 sayılı Kişisel Verilerin Korunması Kanunu kapsamında aşağıdaki haklara sahipsiniz:</p>
+<h2>Kendi İsteğinizle Paylaştıklarınız</h2>
+<p>Uygulama iki dışa aktarma özelliği sunar:</p>
 <ul>
-  <li>Verilerinize erişme hakkı</li>
-  <li>Verilerinizi silme hakkı (uygulamayı sildiğinizde tüm veriler silinir)</li>
-  <li>Verilerinizi düzeltme hakkı</li>
+  <li><strong>PDF borç raporu</strong> — borçlarınızın özetini bir PDF dosyası olarak oluşturur.</li>
+  <li><strong>Yedekleme dosyası</strong> — tüm kayıtlarınızı bir dosyaya aktarır.</li>
 </ul>
+<p>Her iki dosya da şifresiz düz metin/belge olarak oluşturulur ve cihazınızın paylaşım menüsüne verilir. Bu dosyayı nereye gönderdiğiniz (e-posta, bulut, mesajlaşma) tamamen sizin tercihinizdir ve o noktadan sonra ilgili hizmetin gizlilik politikası geçerlidir. Biz bu dosyaları göremeyiz.</p>
 
-<h2>Veri Güvenliği</h2>
-<p>Verileriniz cihazınızın yerel depolama alanında saklanır ve cihazınızın güvenlik özellikleriyle korunur. Uygulama isteğe bağlı PIN ve biyometrik kilit desteği sunar.</p>
+<h2>Güvenlik</h2>
+<p>Uygulama isteğe bağlı PIN ve biyometrik kilit sunar. PIN'iniz düz metin olarak değil, özet (hash) değeri olarak cihazın güvenli anahtar deposunda saklanır. Bu kilit, uygulamayı gündelik meraklı bakışlara karşı korumak içindir; cihazınıza fiziksel erişimi olan teknik bir kişiye karşı tam koruma sağladığı iddia edilmez. Cihazınızın kendi ekran kilidini de kullanmanızı öneririz.</p>
+
+<h2>Verilerinizi Silme</h2>
+<p>Verilerinizi iki şekilde silebilirsiniz:</p>
+<ul>
+  <li><strong>Uygulama içinden:</strong> Ayarlar → Tüm verilerimi sil. Borç, ödeme, hedef ve başarım kayıtlarınızı kalıcı olarak siler.</li>
+  <li><strong>Uygulamayı kaldırarak:</strong> Cihazdaki tüm uygulama verisi silinir.</li>
+</ul>
+<p>Sentry'ye ulaşmış bir çökme raporunun silinmesini isterseniz aşağıdaki adresten bize yazmanız yeterlidir.</p>
+
+<h2>Çocukların Gizliliği</h2>
+<p>Debtly 13 yaş altındaki kullanıcılara yönelik değildir ve bilerek bu yaş grubundan veri toplamaz.</p>
+
+<h2>KVKK Kapsamındaki Haklarınız</h2>
+<p>6698 sayılı Kişisel Verilerin Korunması Kanunu kapsamında; verilerinize erişme, düzeltme, silme ve işlenmesine itiraz etme haklarına sahipsiniz. Borç ve ödeme kayıtlarınız yalnızca cihazınızda bulunduğundan bunlara erişim ve bunları düzeltme/silme yetkisi doğrudan sizdedir. Çökme kayıtlarıyla ilgili talepleriniz için bize yazabilirsiniz.</p>
+
+<h2>Politika Değişiklikleri</h2>
+<p>Bu politika güncellendiğinde bu sayfadaki "son güncelleme" tarihi değiştirilir. Toplanan veri türlerinde esaslı bir değişiklik olursa uygulama içinde bilgilendirme yapılır.</p>
 
 <h2>İletişim</h2>
-<p>Gizlilik ile ilgili sorularınız için: <a href="mailto:oglakcci@gmail.com">oglakcci@gmail.com</a></p>
+<p>Gizlilik ile ilgili sorularınız ve talepleriniz için: <a href="mailto:oglakcci@gmail.com">oglakcci@gmail.com</a></p>
 
 <footer>
   <p>© 2026 Yasar Oglakci · <a href="index.html">Tüm uygulamalar</a></p>
